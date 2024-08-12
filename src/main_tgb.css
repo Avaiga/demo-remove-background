@@ -1,0 +1,8 @@
+strong, b {
+    font-weight: bold; /* This is equivalent to 700 */
+    color: #ff6049;
+}
+
+.css-75cauk .sidebar{
+    height: auto;
+}

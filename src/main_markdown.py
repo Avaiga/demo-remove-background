@@ -9,9 +9,11 @@ original_image = None
 image = None
 fixed_image = None
 fixed = False
-advanced_properties = {"alpha_matting_foreground_threshold":240,
-                       "alpha_matting_background_threshold":10,
-                       "alpha_matting_erode_size":10}
+advanced_properties = {
+    "alpha_matting_foreground_threshold": 240,
+    "alpha_matting_background_threshold": 10,
+    "alpha_matting_erode_size": 10,
+}
 
 
 page = """<|toggle|theme|>
@@ -69,24 +71,36 @@ def convert_image(img):
     byte_im = buf.getvalue()
     return byte_im
 
+
 def upload_image(state):
     state.image = Image.open(state.path_upload)
     state.original_image = convert_image(state.image)
     state.fixed = False
     fix_image(state)
 
+
 def fix_image(state, id=None, action=None):
     state.fixed = False
-    notify(state, 'info', 'Removing the background...')
-    fixed_image = remove(state.image,
-                         alpha_matting=True if action is not None else False, # Apply options when the button is clicked
-                         alpha_matting_foreground_threshold=int(state.advanced_properties['alpha_matting_foreground_threshold']),
-                         alpha_matting_background_threshold=int(state.advanced_properties['alpha_matting_background_threshold']),
-                         alpha_matting_erode_size=int(state.advanced_properties['alpha_matting_erode_size']))
+    notify(state, "info", "Removing the background...")
+    fixed_image = remove(
+        state.image,
+        alpha_matting=(
+            True if action is not None else False
+        ),  # Apply options when the button is clicked
+        alpha_matting_foreground_threshold=int(
+            state.advanced_properties["alpha_matting_foreground_threshold"]
+        ),
+        alpha_matting_background_threshold=int(
+            state.advanced_properties["alpha_matting_background_threshold"]
+        ),
+        alpha_matting_erode_size=int(
+            state.advanced_properties["alpha_matting_erode_size"]
+        ),
+    )
 
     state.fixed_image = convert_image(fixed_image)
     state.fixed = True
-    notify(state, 'success', 'Background removed successfully!')
+    notify(state, "success", "Background removed successfully!")
 
 
 def download_image(state):
@@ -94,4 +108,4 @@ def download_image(state):
 
 
 if __name__ == "__main__":
-    Gui(page=page).run(margin="0px", title='Background Remover')
+    Gui(page=page).run(margin="0px", title="Background Remover")

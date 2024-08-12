@@ -1,3 +1,4 @@
-taipy==3.1
+numpy==1.26
+taipy==4.0.0.dev0
 rembg
 pillow
