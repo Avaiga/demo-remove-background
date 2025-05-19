@@ -1,0 +1,12 @@
+[project]
+name = "demo-remove-background-avaiga"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==1.26",
+    "pillow>=11.2.1",
+    "rembg>=2.0.66",
+    "taipy>=4.0.3",
+]

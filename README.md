@@ -25,7 +25,7 @@
 
 ## How to run
 
-This demo works with a Python version superior to 3.8. Install the dependencies of the *requirements.txt* and run the *main_markdown.py* or *main_tgb.py*.
+This demo works with a Python version superior to 3.9. Install the dependencies of the *requirements.txt* and run the *main_markdown.py* or *main_tgb.py*.
 
 
 ## Directory Structure
